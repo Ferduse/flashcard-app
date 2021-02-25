@@ -3,13 +3,12 @@
 ## Lab 1
 
 ### App Description
-`TODO://` Display a question and responds to a user's tap to display the answer to the question.
+Display a question and responds to a user's tap to display the answer to the question.
 
 
 ### App Walk-though
-`TODO://`
 
-<img src=https://www.loom.com/share/6a1162de7ac94f41b363baccfaabcb11.gif ><br>
+<a href="https://www.loom.com/share/6a1162de7ac94f41b363baccfaabcb11"> <p>Pixel_API_28:5554 - Android Emulator - Pixel_API_28:5554 - Watch Video</p> <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/6a1162de7ac94f41b363baccfaabcb11-with-play.gif"> </a>
 
 ## Required
 - [x] Create New Project in Android Studio
