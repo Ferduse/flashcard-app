@@ -7,8 +7,7 @@ Display a question and responds to a user's tap to display the answer to the que
 
 
 ### App Walk-though
-
-<div style="position: relative; padding-bottom: 184.6153846153846%; height: 0;"><iframe src="https://www.loom.com/embed/6a1162de7ac94f41b363baccfaabcb11" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+![flashcard-app](https://www.loom.com/share/6a1162de7ac94f41b363baccfaabcb11.gif)
 
 ## Required
 - [x] Create New Project in Android Studio
