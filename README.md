@@ -9,7 +9,7 @@
 ### App Walk-though
 `TODO://`
 
-<img src="https://www.loom.com/share/6a1162de7ac94f41b363baccfaabcb11.gif" width=200><br>
+<img src=https://www.loom.com/share/6a1162de7ac94f41b363baccfaabcb11.gif ><br>
 
 ## Required
 - [x] Create New Project in Android Studio
