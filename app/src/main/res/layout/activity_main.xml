@@ -12,7 +12,9 @@
         android:layout_height="200dp"
         android:textSize="40sp"
         android:text="When was the first version of Android released?"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:background="#8E1600"
+        android:textColor="#ffffff"/>
 
 
     <TextView
@@ -22,8 +24,11 @@
         android:textSize="40sp"
         android:text="2008"
         android:textAlignment="center"
-        android:layout_below="@id/question"
-        android:visibility="invisible" />
+        android:gravity="center"
+        android:visibility="invisible"
+        android:background="#81B622"
+        android:textColor="#ffffff"
+        />
 
 
 </RelativeLayout>
