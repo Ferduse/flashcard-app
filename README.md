@@ -7,7 +7,7 @@ Display a question and responds to a user's tap to display the answer to the que
 
 
 ### App Walk-though
-![flashcard-app](lab2.gif)
+![flashcard-app](http://g.recordit.co/OEf5R6e6yI.gif)
 
 ## Required
 - [x] Create New Project in Android Studio
