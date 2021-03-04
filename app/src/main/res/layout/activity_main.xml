@@ -10,25 +10,92 @@
         android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:textSize="40sp"
+        android:textSize="30sp"
+        android:gravity="center"
         android:text="When was the first version of Android released?"
         android:textAlignment="center"
-        android:background="#8E1600"
-        android:textColor="#ffffff"/>
+        android:elevation="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/card_background"
+        />
 
 
     <TextView
         android:id="@+id/answer"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:textSize="40sp"
+        android:layout_height="226dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#81B622"
+        android:gravity="center"
         android:text="2008"
         android:textAlignment="center"
-        android:gravity="center"
-        android:visibility="invisible"
-        android:background="#81B622"
         android:textColor="#ffffff"
-        />
+        android:textSize="40sp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/choiceThree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="248dp"
+        android:background="#E2BEF1"
+        android:gravity="center"
+        android:text="2006"
+        android:textColor="#ffffff"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/choiceTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="360dp"
+        android:background="#E2BEF1"
+        android:gravity="center"
+        android:text="2007"
+        android:textColor="#ffffff"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/choiceOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="475dp"
+        android:background="#E2BEF1"
+        android:gravity="center"
+        android:text="2008"
+        android:textColor="#ffffff"
+        android:textSize="50sp" />
 
 
+    <ImageView
+        android:id="@+id/toggle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:src="@drawable/eye_open" />
+
+    <Button
+        android:id="@+id/buttonR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/choiceThree"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="241dp"
+        android:gravity="center"
+        android:text="Reset" />
 </RelativeLayout>

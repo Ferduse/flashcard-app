@@ -1,10 +1,12 @@
 package com.example.flashcard;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,10 +14,43 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        TextView questionTextView = findViewById(R.id.question);
         TextView answerTextView = findViewById(R.id.answer);
+        TextView questionTextView = findViewById(R.id.question);
+        TextView choiceOne = findViewById(R.id.choiceOne);
+        TextView choiceTwo = findViewById(R.id.choiceTwo);
+        TextView choiceThree = findViewById(R.id.choiceThree);
+        ImageView toggle = findViewById(R.id.toggle);
+        Button buttonR = findViewById(R.id.buttonR);
 
+        //for the button.
+        final boolean[] showAnswers = {true};
+        final boolean[] flipped = {false};
+
+        // change the background color of the multiple choice answers when
+        // clicked to indicate whether the question was answered correctly
+        choiceOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                choiceOne.setBackgroundColor(getResources().getColor(R.color.green, null));
+            }
+        });
+        choiceTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                choiceOne.setBackgroundColor(getResources().getColor(R.color.green, null));
+                choiceTwo.setBackgroundColor(getResources().getColor(R.color.red, null));
+            }
+        });
+        choiceThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                choiceOne.setBackgroundColor(getResources().getColor(R.color.green, null));
+                choiceThree.setBackgroundColor(getResources().getColor(R.color.red, null));
+            }
+        });
+
+
+        //question and answer toggle
         questionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,5 +66,40 @@ public class MainActivity extends AppCompatActivity {
                 answerTextView.setVisibility(View.INVISIBLE);
             }
         });
+
+        // added a button so users can easily reset the correct and incorrect choices.
+        buttonR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                choiceOne.setBackgroundColor(getResources().getColor(R.color.pink, null));
+                choiceTwo.setBackgroundColor(getResources().getColor(R.color.pink, null));
+                choiceThree.setBackgroundColor(getResources().getColor(R.color.pink, null));
+                questionTextView.setText("When was the first version of Android released?");
+                flipped[0] = false;
+            }
+        });
+
+        // to show the choices and hide the choices
+        toggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (showAnswers[0]) {
+                    showAnswers[0] = false;
+                    choiceOne.setVisibility(View.INVISIBLE);
+                    choiceTwo.setVisibility(View.INVISIBLE);
+                    choiceThree.setVisibility(View.INVISIBLE);
+                    toggle.setImageResource(R.drawable.eye_hidden);
+
+                } else {
+                    showAnswers[0] = true;
+                    choiceOne.setVisibility(View.VISIBLE);
+                    choiceTwo.setVisibility(View.VISIBLE);
+                    choiceThree.setVisibility(View.VISIBLE);
+                    toggle.setImageResource(R.drawable.eye_open);
+                }
+            }
+        });
+
     }
 }
