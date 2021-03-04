@@ -7,7 +7,7 @@ Display a question and responds to a user's tap to display the answer to the que
 
 
 ### App Walk-though
-![flashcard-app](http://g.recordit.co/M2MQ4Djj87.gif)
+![flashcard-app](lab2.gif)
 
 ## Required
 - [x] Create New Project in Android Studio
@@ -18,6 +18,6 @@ Display a question and responds to a user's tap to display the answer to the que
 ## Optional
 - [x] toggle the flashcard between the question side and the answer side
 - [x] Style the question and answer side of the card to better distinguish between the two sides
-- [ ] Add selectable multiple choice answers beneath the card
-   - [ ] Change the background color of the multiple choice answers when clicked to indicate whether the question waanswered correctly
-- [ ] Further customize and style the card
+- [x] Add selectable multiple choice answers beneath the card
+   - [x] Change the background color of the multiple choice answers when clicked to indicate whether the question waanswered correctly
+- [x] Further customize and style the card
