@@ -28,7 +28,7 @@ public class AddCardActivity extends AppCompatActivity {
                 String card_a = ((EditText) findViewById(R.id.answerPlace)).getText().toString();
 
 
-                Intent data = new Intent();
+                Intent data = new Intent(AddCardActivity.this, MainActivity.class);
                 data.putExtra("question", card_q);
                 data.putExtra("answer", card_a);
                 setResult(RESULT_OK, data);

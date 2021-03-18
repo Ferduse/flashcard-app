@@ -9,7 +9,20 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
+
+
+
 public class MainActivity extends AppCompatActivity {
+    private TextView questionSideView;
+    private TextView answerSideView;
+
+    FlashcardDatabase flashcardDatabase;
+    List<Flashcard> allFlashcards;
+    int currentCardDisplayedIndex = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +35,37 @@ public class MainActivity extends AppCompatActivity {
         TextView choiceThree = findViewById(R.id.choiceThree);
         ImageView toggle = findViewById(R.id.toggle);
         Button buttonR = findViewById(R.id.buttonR);
-        ImageView add = (ImageView) findViewById(R.id.add);
+        ImageView add = findViewById(R.id.add);
+        ImageView trash = findViewById(R.id.deleteBtn);
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+
+
+        questionSideView = findViewById(R.id.question);
+        answerSideView = findViewById(R.id.answer);
+
+        flashcardDatabase = new FlashcardDatabase(this);
+        allFlashcards = flashcardDatabase.getAllCards();
+        /*
+        if (allFlashcards != null && allFlashcards.size() > 0) {
+            ((TextView) findViewById(R.id.question)).setText(allFlashcards.get(0).getQuestion());
+            ((TextView) findViewById(R.id.answer)).setText(allFlashcards.get(0).getAnswer());
+        }
+        */
+
+        flashcardDatabase = new FlashcardDatabase((getApplicationContext()));
+        if (flashcardDatabase.getAllCards().size() > 0){
+            ((TextView) findViewById(R.id.question)).setText(allFlashcards.get(0).getQuestion());
+            ((TextView) findViewById(R.id.answer)).setText(allFlashcards.get(0).getAnswer());
+
+        }
+
+        currentCardDisplayedIndex = 0;
+        Flashcard flashcard = flashcardDatabase.getAllCards().get(0);
+        String question = flashcard.getQuestion();
+        questionSideView.setText(question);
+        String answer = flashcard.getAnswer();
+        answerSideView.setText(answer);
+
 
         //for the button.
         final boolean[] showAnswers = {true};
@@ -105,6 +148,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        findViewById(R.id.nextBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // don't try to go to next card if you have no cards to begin with
+                if (allFlashcards.size() == 0)
+                    return;
+                // advance our pointer index so we can show the next card
+                currentCardDisplayedIndex++;
+
+                // make sure we don't get an IndexOutOfBoundsError if we are viewing the last indexed card in our list
+                if(currentCardDisplayedIndex >= allFlashcards.size()) {
+                    Snackbar.make(questionSideView,
+                            "You've reached the end of the cards, going back to start.",
+                            Snackbar.LENGTH_SHORT)
+                            .show();
+                    currentCardDisplayedIndex = 0;
+                }
+
+                // set the question and answer TextViews with data from the database
+                allFlashcards = flashcardDatabase.getAllCards();
+                Flashcard flashcard = allFlashcards.get(currentCardDisplayedIndex);
+
+                ((TextView) findViewById(R.id.question)).setText(flashcard.getAnswer());
+                ((TextView) findViewById(R.id.answer)).setText(flashcard.getQuestion());
+            }
+        });
+
+
+
+        findViewById(R.id.deleteBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flashcardDatabase.deleteCard(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                allFlashcards = flashcardDatabase.getAllCards();
+            }
+        });
+
+
+
+
         findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,12 +208,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100) { // this 100 needs to match the 100 we used when we called startActivityForResult!
-            String question = data.getExtras().getString("question"); // 'string1' needs to match the key we used when we put the string in the Intent
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            String question = data.getExtras().getString("question");
             String answer = data.getExtras().getString("answer");
 
             ((TextView) findViewById(R.id.question)).setText(question);
             ((TextView) findViewById(R.id.answer)).setText(answer);
+
+
+            flashcardDatabase.insertCard(new Flashcard(question, answer));
+            allFlashcards = flashcardDatabase.getAllCards();
+
+
+
+
         }
     }
 
